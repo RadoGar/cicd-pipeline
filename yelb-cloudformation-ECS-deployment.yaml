@@ -403,7 +403,16 @@ Outputs:
         Description: The URL of the ALB
         Value: !GetAtt YelbLoadBalancer.DNSName
 
+#testy
 
+FlowBucket: 
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
 
 
 
