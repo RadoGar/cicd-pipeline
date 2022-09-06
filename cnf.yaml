@@ -63,11 +63,13 @@ Resources:
       AvailabilityZone: !Select 
         - 0
         - Fn::GetAZs: ""
-      #Encrypted: False
+      Encrypted: False
       Size: 1
       Tags: 
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-ebs"
+       
+
 
   ### CFN Does not Support Volume Snapshot
 
