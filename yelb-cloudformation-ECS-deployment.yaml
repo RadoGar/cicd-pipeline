@@ -370,15 +370,16 @@ Resources:
               FromPort: 80
             VpcId: !Ref 'VPC'
 
-    YelbLoadBalancer:
+    YelbLoadBalancer:	
       Type: AWS::ElasticLoadBalancingV2::LoadBalancer
       Properties:
         Scheme: internet-facing
         Subnets: [ !Ref 'PublicSubnetOne' , !Ref 'PublicSubnetTwo' ]
-        SecurityGroups: [ !Ref YelbLBSecurityGroup ]
+        SecurityGroups: [ !Ref YelbLBSecurityGroup ]             
 
+    
     YelbLoadBalancerListener:
-      Type: AWS::ElasticLoadBalancingV2::Listener
+	  Type: AWS::ElasticLoadBalancingV2::Listener
       Properties:
         LoadBalancerArn: !Ref YelbLoadBalancer
         Port: 80
@@ -410,7 +411,7 @@ Outputs:
 #testy
 
 FlowBucket: 
-    Type: AWS::S3::Bucket
+    Type: AWS::S3::Bucket    
     DeletionPolicy: Delete
     Properties:
       BucketName: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
