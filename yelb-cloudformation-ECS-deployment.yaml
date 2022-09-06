@@ -157,6 +157,10 @@ Resources:
                   Environment: 
                     - Name: SEARCH_DOMAIN
                       Value: !Ref 'Domain' 
+                      Variables:
+# dodane przez RGA
+                        access_key: "AKIAIOSFODNN7EXAMPLE"
+                        secret_key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
                   LogConfiguration:
                     LogDriver: awslogs
                     Options:
@@ -404,7 +408,16 @@ Outputs:
         Description: The URL of the ALB
         Value: !GetAtt YelbLoadBalancer.DNSName
 
+#testy
 
+FlowBucket: 
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
+      Tags:
+        - Key: Name
+          Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-flowlogs"
 
 
 
