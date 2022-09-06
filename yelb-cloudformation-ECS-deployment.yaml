@@ -377,9 +377,9 @@ Resources:
         Subnets: [ !Ref 'PublicSubnetOne' , !Ref 'PublicSubnetTwo' ]
         SecurityGroups: [ !Ref YelbLBSecurityGroup ]             
 
+    
     YelbLoadBalancerListener:
-	# checkov:skip=CKV_AWS_2: Brak rozwiązania
-      Type: AWS::ElasticLoadBalancingV2::Listener
+	  Type: AWS::ElasticLoadBalancingV2::Listener
       Properties:
         LoadBalancerArn: !Ref YelbLoadBalancer
         Port: 80
