@@ -17,6 +17,7 @@ Parameters:
     Description: Database Password 
     Type: String
     NoEcho: True
+
     MinLength: 1
     MaxLength: 41
     AllowedPattern: ^[a-zA-Z0-9]*$
@@ -54,7 +55,6 @@ Resources:
           export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMAAAKEY
           export AWS_DEFAULT_REGION=us-west-2
           echo "<h1>Deployed via CloudFormation</h1>" | sudo tee /var/www/html/index.html
-    
   WebHostStorage:
     # Unencrypted Volume 
     Type: AWS::EC2::Volume
@@ -66,6 +66,9 @@ Resources:
       Size: 1
       Tags: 
         - Key: Name
+          Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-ebs"
+      Encrypted: True
+
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-ebs"
 
   ### CFN Does not Support Volume Snapshot
