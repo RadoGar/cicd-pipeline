@@ -4,11 +4,9 @@ FROM postgres:10.0
 WORKDIR /
 
 
-COPY init-yelb-db.sh /docker-entrypoint-initdb.d/init-yelb-db.sh
-
 ENV POSTGRES_PASSWORD=postgres_password
 
-FROM ubuntu:18.04
+FROM ubuntu:latest
 LABEL MAINTAINER="UTD" INFO="Kubernetes"
 RUN apt-get update && apt-get install -y htop \
     libcap2-bin curl wget && \
